@@ -1,0 +1,266 @@
+*
+{
+    margin: 0;
+    
+    box-sizing: border-box;
+
+    --Calendar-StrongColor: rgb(36, 35, 35);
+}
+
+#ToDoWrapper
+{
+    position: relative;
+
+    --margins: 80px;
+
+    height: calc(100vh - (var(--margins)*2));
+
+    margin-top: var(--margins);
+    margin-bottom: var(--margins);
+    margin-left: var(--margins);
+    margin-right: var(--margins);
+
+    backdrop-filter: blur(2.5px) brightness(50%);
+
+    border-radius: 10px;
+}
+
+#ToDoWrapper > .Background
+{
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    border-radius: 10px;
+
+    filter: brightness(3.5) opacity(0.6) contrast(1.4);
+    background-color: var(--Dark-Body-Background-Color);
+}
+
+#ToDoContainer
+{
+    height: 100%;
+
+    color: rgb(230, 232, 240);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-y: scroll;
+
+    padding: 75px 0px;
+}
+
+#ToDoContainer > h1
+{
+    margin-bottom: 120px;
+    font-size: 8.5rem;
+}
+
+#ToDoContainer > h2
+{
+    align-self: flex-start;
+
+    font-size: 4.2rem;
+
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
+
+#ToDoContainer > textarea
+{
+    color: rgb(230, 232, 240);
+    font-size: 3rem;
+
+    width: 90%;
+    min-height: 500px;
+    
+    background-color: transparent;
+
+    border-width: 0.15rem;
+    border-radius: 0.2rem;
+    border-color: rgb(192, 192, 196);
+    border-left: none;
+    border-right: none;
+
+    text-align: justify;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 28px;
+    padding-right: 28px;
+
+    margin-bottom: 120px;
+}
+
+#ToDoContainer > textarea::placeholder
+{
+    text-align: center;
+}
+
+#CheckContainer
+{
+    align-self: flex-start;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 4.2rem;
+
+    margin-left: 5%;
+
+    margin-bottom: 120px;
+}
+
+#CheckContainer > input
+{
+    height: 4.2rem;
+    width: 4.2rem;
+
+    margin-right: 30px;
+}
+
+#ToDoContainer > .CalendarWrapper
+{
+    position: relative;
+}
+
+#ToDoContainer > .CalendarWrapper > .Close
+{
+    position: absolute;
+
+    top: -10px;
+    right: -10px;
+
+    background-image: url('Images/XIcon.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 5%;
+    aspect-ratio: 1/1;
+}
+
+.rdt
+{
+    position: initial !important;
+
+    width: min-content;
+}
+
+.rdt > input
+{
+    max-width: min-content;
+
+    color: rgb(230, 232, 240);
+    font-size: 4rem;
+    text-decoration: underline;
+    text-decoration-color: rgb(192, 192, 196);
+
+    text-align: center;
+
+    background-color: transparent;
+
+    border: none;
+    
+    margin-bottom: 200px;
+}
+
+.rdtPicker
+{
+    min-width: 80vw !important; 
+    max-width: 80vw !important; 
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rdtPicker > div > table > thead
+{
+    font-size: 5rem;
+}
+
+.rdtPicker > div > table > tbody
+{
+    font-size: 5rem;
+}
+
+.rdtDay
+{
+    color: var(--Calendar-StrongColor);
+}
+
+.rdtOld
+{
+    color: var(--Calendar-StrongColor);
+    opacity: 0.4;
+}
+
+.rdtNew
+{
+    color: var(--Calendar-StrongColor);
+    opacity: 0.4;
+}
+
+.dow
+{
+    color: var(--Calendar-StrongColor);
+}
+
+.rdtSwitch
+{
+    color: var(--Calendar-StrongColor);
+}
+
+.rdtPrev
+{
+    color: var(--Calendar-StrongColor);
+
+    font-size: 8rem !important;
+}
+
+.rdtNext
+{
+    color: var(--Calendar-StrongColor);
+    font-size: 8rem !important;
+}
+
+.rdtMonth
+{
+    color: var(--Calendar-StrongColor);
+}
+
+.rdtYear
+{
+    color: var(--Calendar-StrongColor);
+}
+
+.rdtCentury
+{
+    color: var(--Calendar-StrongColor);
+}
+
+#BtnSalvar
+{
+    max-width: 90%;
+    min-width: 90%;
+    min-height: 130px;
+    aspect-ratio: 5/1;
+
+    background-color: rgb(44, 197, 31);
+
+    border-radius: 1rem;
+    border-style: solid;
+    border-width: 0.65rem;
+    border-color: rgb(208, 208, 212);
+
+    font-size: 4.5rem;
+
+    justify-self: flex-end;
+
+    margin-top: auto;
+}
