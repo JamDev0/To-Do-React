@@ -7,100 +7,177 @@
     --Calendar-StrongColor: rgb(36, 35, 35);
 }
 
+#ToDo
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    backdrop-filter: blur(5px) brightness(50%);
+
+    padding: 80px;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'ToDoWrapper';
+}
+
 #ToDoWrapper
 {
     position: relative;
-
-    --margins: 80px;
-
-    height: calc(100vh - (var(--margins)*2));
-
-    margin-top: var(--margins);
-    margin-bottom: var(--margins);
-    margin-left: var(--margins);
-    margin-right: var(--margins);
-
-    backdrop-filter: blur(2.5px) brightness(50%);
-
-    border-radius: 10px;
-}
-
-#ToDoWrapper > .Background
-{
-    position: absolute;
-    top: 0; 
-    left: 0;
+    
+    grid-area: ToDoWrapper;
     width: 100%;
     height: 100%;
-    z-index: -1;
-
+    
+    overflow-y: scroll;
+    
     border-radius: 10px;
+    
+    padding: 75px 0px;
 
-    filter: brightness(3.5) opacity(0.6) contrast(1.4);
-    background-color: var(--Dark-Body-Background-Color);
+    background-color: var(--Dark-Elements-Background-Color);
+}    
+
+#ToDoWrapper > .Close
+{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 1;
+
+    background-image: url('Images/XIcon.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 60px;
+    aspect-ratio: 1/1;
 }
 
 #ToDoContainer
 {
-    height: 100%;
+    position: relative;
+    z-index: 1;
 
-    color: rgb(230, 232, 240);
+    color: var(--Dark-Text-Color);
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
-    overflow-y: scroll;
-
-    padding: 75px 0px;
 }
 
-#ToDoContainer > h1
+#ToDoContainer::-webkit-scrollbar-button
+{
+    display: none;
+}
+
+#ToDoContainer > span
 {
     margin-bottom: 120px;
-    font-size: 8.5rem;
+
+    width: fit-content;
+    max-width: 70%;
+
+    overflow-x: hidden;
+
+    white-space: nowrap;
+
+    font-family: 'Sanchez';
+    font-size: 7.5rem;
+    letter-spacing: 7px;
+    text-align: center;
 }
 
-#ToDoContainer > h2
+#ToDoContainer > span:empty:not(:focus):before{
+    content:attr(data-text);
+    filter: opacity(50%);
+}
+
+#ToDoContainer > label
 {
     align-self: flex-start;
 
-    font-size: 4.2rem;
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 3.9rem;
 
-    margin-left: 10%;
+    margin-left: 7%;
     margin-bottom: 20px;
 }
 
-#ToDoContainer > textarea
+#ToDoContainer > .TextareaWrapper
 {
-    color: rgb(230, 232, 240);
-    font-size: 3rem;
+    position: relative;
 
     width: 90%;
+    height: 500px;
     min-height: 500px;
+    
+    text-align: justify;
+
+    margin-bottom: 120px;
+}
+
+#ToDoContainer > .TextareaWrapper > .Border
+{
+    position: absolute;
+    left: 0;
+    z-index: 3;
+
+    width: 100%;
+    height: 10%;
+
+    border-width: 0.15rem;
+    border-color: var(--Dark-Text-Second-Color-Shade);
+    border-style: solid;
+    border-top: none;
+    border-bottom: none;
+}
+
+#ToDoContainer > .TextareaWrapper > .Top
+{
+    top: 0;
+}
+
+#ToDoContainer > .TextareaWrapper > .Bottom
+{
+    bottom: 0;
+}
+
+#ToDoContainer > .TextareaWrapper > textarea
+{
+    font-family: 'Open Sans';
+    color: var(--Dark-Text-Color);
+    font-size: 3rem;
+
+    width: 100%;
+    height: 100%;
     
     background-color: transparent;
 
     border-width: 0.15rem;
     border-radius: 0.2rem;
-    border-color: rgb(192, 192, 196);
+    border-color: var(--Dark-Text-Second-Color-Shade);
+    border-style: solid;
     border-left: none;
     border-right: none;
-
-    text-align: justify;
-
+    
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 28px;
     padding-right: 28px;
-
-    margin-bottom: 120px;
 }
 
-#ToDoContainer > textarea::placeholder
+#ToDoContainer > .TextareaWrapper > textarea::placeholder
 {
     text-align: center;
+    font-weight: 300;
 }
 
 #CheckContainer
@@ -110,7 +187,9 @@
     display: flex;
     align-items: center;
 
-    font-size: 4.2rem;
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 3.9rem;
 
     margin-left: 5%;
 
@@ -119,34 +198,23 @@
 
 #CheckContainer > input
 {
-    height: 4.2rem;
-    width: 4.2rem;
+    height: 4rem;
+    width: 4rem;
 
     margin-right: 30px;
 }
 
 #ToDoContainer > .CalendarWrapper
 {
-    position: relative;
-}
-
-#ToDoContainer > .CalendarWrapper > .Close
-{
-    position: absolute;
-
-    top: -10px;
-    right: -10px;
-
-    background-image: url('Images/XIcon.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 5%;
-    aspect-ratio: 1/1;
+    margin-bottom: 200px;
 }
 
 .rdt
 {
     position: initial !important;
+
+    font-family: 'Open Sans';
+    font-weight: 500;
 
     width: min-content;
 }
@@ -155,22 +223,22 @@
 {
     max-width: min-content;
 
-    color: rgb(230, 232, 240);
-    font-size: 4rem;
+    color: var(--Dark-Text-Color);
+    font-size: 3.9rem;
     text-decoration: underline;
-    text-decoration-color: rgb(192, 192, 196);
+    text-decoration-color: var(--Dark-Text-Second-Color-Shade);
 
     text-align: center;
 
     background-color: transparent;
 
     border: none;
-    
-    margin-bottom: 200px;
 }
 
 .rdtPicker
 {
+    position: absolute;
+
     min-width: 80vw !important; 
     max-width: 80vw !important; 
 
@@ -251,16 +319,21 @@
     min-height: 130px;
     aspect-ratio: 5/1;
 
-    background-color: rgb(44, 197, 31);
+    background-color: var(--Dark-Ok-Color);
 
-    border-radius: 1rem;
+    border-radius: 10px;
     border-style: solid;
-    border-width: 0.65rem;
-    border-color: rgb(208, 208, 212);
+    border-width: 7px;
+    border-color: var(--Dark-Text-Color);
 
-    font-size: 4.5rem;
+    font-family: 'Open Sans';
+    font-weight: 500;
+    color: var(--Dark-Text-Color);
+    font-size: 3.9rem;
 
     justify-self: flex-end;
+
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.726);
 
     margin-top: auto;
 }

@@ -8,7 +8,6 @@ function ToDo(Props)
 {
     const [CalendarToDo, setCalendarToDo] = useState(null);
     const [RenderCalendarToDoCont, setRenderCalendarToDoCont] = useState(0);
-    const [CalendarToDoCloseElement, setCalendarToDoCloseElement] = useState(null);
     
     useEffect(()=>{
         
@@ -20,7 +19,7 @@ function ToDo(Props)
         {
             setCalendarToDo(()=>{
                 return(
-                    <Datetime onOpen={RenderCalendarToDoCloseElement} inputProps={{'inputMode': 'none'}} initialValue={new Date()} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
+                    <Datetime inputProps={{'inputMode': 'none'}} initialValue={new Date()} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
                 )
             })
 
@@ -34,33 +33,30 @@ function ToDo(Props)
         }
     }
 
-    function RenderCalendarToDoCloseElement()
-    {
-        setCalendarToDoCloseElement(()=>{
-            return(
-                <div className="Close">
-                </div>
-            )
-        });
-    }
     
     return(
-        <div id="ToDoWrapper">
+        <div id="ToDo">
             <div className="Background"></div>
-            <div id="ToDoContainer">
-                <h1>{Props.Title}</h1>
-                <h2>Descrição</h2>
-                <textarea resisable='false' placeholder='Descrição simples(ou não) da sua tarefa!'></textarea>
-                <div id="CheckContainer">
-                    <input type='checkbox' id='Check' onChange={RenderCalendarToDo}></input>
-                    <label htmlFor='Check'>Data Limite</label>
+            <div id="ToDoWrapper">
+                <div className="Close" onClick={Props.CloseOnClick}></div>
+                <div id="ToDoContainer">
+                    <span role="textbox" data-text="Titulo" contentEditable></span>
+                    <label htmlFor="ToDoContainerTextArea">Descrição</label>
+                    <div className="TextareaWrapper">
+                        <div className="Border Top"></div>
+                        <textarea id="ToDoContainerTextArea" resisable='false' placeholder='Descrição simples(ou não) da sua tarefa!'></textarea>
+                        <div className="Border Bottom"></div>
+                    </div>
+                    <div id="CheckContainer">
+                        <input type='checkbox' id='Check' onChange={RenderCalendarToDo}></input>
+                        <label htmlFor='Check'>Data Limite</label>
+                    </div>
+                    <div className='CalendarWrapper'>
+                        {CalendarToDo}  
+                    </div>
+                    {console.log(Props)}
+                    <button id="BtnSalvar" onClick={Props.BtnSaveOnClick}>Salvar</button>
                 </div>
-                <div className='CalendarWrapper'>
-                    {/* {CalendarToDoCloseElement}
-                    Fazer um botão para fechar o calendario */}
-                    {CalendarToDo}  
-                </div>
-                <button id="BtnSalvar">Salvar</button>
             </div>
         </div>
     )

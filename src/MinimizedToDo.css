@@ -1,0 +1,179 @@
+#MinimizedToDoWrapper
+{
+    position: relative;
+    
+    width: 80%;
+}
+
+#MinimizedToDoWrapper > .Delete
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    min-width: 35%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+
+    background-color: var(--Dark-Elements-Background-Color);
+
+    padding: 25px 25px;
+
+    border: 3.5px solid var(--Dark-No-Color);
+    border-radius: 8px;
+}
+
+#MinimizedToDoWrapper > .Delete > .Img
+{
+    width: 75%;
+    aspect-ratio: 1/1;
+
+    background-image: url('Images/DeleteIcon.svg');
+    background-size: cover;
+}
+
+#MinimizedToDoWrapper > .Delete > span
+{
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 3.3rem;
+    color: var(--Dark-No-Color);
+}
+
+#MinimizedToDoWrapper > .Confirm
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+    min-width: 35%;
+    height: 100%;
+
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 5rem;
+
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+    grid-template-areas: 'Yes'
+                         'No';
+}
+
+#MinimizedToDoWrapper > .Confirm > .Yes
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--Dark-Ok-Color);
+
+    color: var(--Dark-Text-Color);
+}
+
+#MinimizedToDoWrapper > .Confirm > .No
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--Dark-No-Color);
+    
+    color: var(--Dark-Text-Color);
+}
+
+#MinimizedToDo
+{
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'Content DoneBtn';
+    column-gap: 30px;
+    align-items: center;
+
+    padding: 30px 30px;
+
+    color: var(--Dark-Text-Color);
+
+    border-radius: 10px;
+
+    background-color: var(--Dark-Elements-Background-Color);
+
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.726);
+}
+
+#MinimizedToDo > .Content
+{
+    grid-area: Content;
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 100%;
+}
+
+#MinimizedToDo > .Content > h2
+{
+    grid-area: Title;
+
+    font-size: 5rem;
+    font-family: 'Sanchez';
+    letter-spacing: 7px;
+
+    width: min-content;
+    height: min-content;
+}
+
+#MinimizedToDo > .Content > p
+{
+    grid-area: Description;
+
+    font-family: 'Open Sans';
+    font-weight: 500;
+    font-size: 3.3rem;
+
+    width: 100%;
+
+    margin-bottom: 30px;
+}
+
+#MinimizedToDo > .Content > span
+{
+    grid-area: Date;
+
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 3rem;
+
+    width: min-content;
+    height: min-content;
+}
+
+#MinimizedToDo > .DoneBtn
+{
+    grid-area: DoneBtn;
+    justify-self: center;
+
+    width: 90%;
+    aspect-ratio: 1/1;
+
+    background-image: url('Images/DoneIcon.svg');
+    background-size: cover;
+    background-position: center;
+}

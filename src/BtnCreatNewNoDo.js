@@ -10,9 +10,7 @@ function BtnCreatNewToDo(Props)
     // }
 
     return(
-        <div id="BtnCreatNewToDo">
-            <button>{Props.Text}</button>
-        </div>
+        <button onClick={Props.OnClick} id="BtnCreatNewToDo">{Props.Text}</button>
     )
 }
 

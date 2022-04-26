@@ -1,8 +1,8 @@
-#BtnCreateNewToDo > button
+#BtnCreatNewToDo
 {
     position: relative;
 
-    background-color: transparent;
+    background-color: var(--Dark-Elements-Background-Color);
 
     width: 800px;
     aspect-ratio: 4.2/1;
@@ -10,22 +10,11 @@
     border: none;
     border-radius: 10px;
 
-    font-size: 3.5rem;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 4.2rem;
     color: rgb(211, 214, 214);
     filter: opacity(0.8);
-}
 
-#BtnCreateNewToDo > button::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;  
-    z-index: -1;
-
-    border-radius: 10px;
-
-    filter: brightness(3) opacity(0.5);
-    background-color: var(--Dark-Body-Background-Color);
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.726);
 }
