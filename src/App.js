@@ -7,7 +7,9 @@ import ToDo from './ToDo';
 function App() {
   const [ToDoRenderState, setToDoRenderState] = useState(null);
 
-  const [AmounthOfMinimizedToDo, setAmounthOfMinimizedToDo] = useState(1);
+  let AmounthOfMinimizedToDo = 0;
+
+  const [MinimizedToDos, setMinimizedToDos] = useState([<MinimizedToDo key={AmounthOfMinimizedToDo} DeleteToDoFunction={UnrenderToDo} MinimizedToDoOnClick={RenderToDo}></MinimizedToDo>])
 
   function RenderToDo()
   {
@@ -23,19 +25,21 @@ function App() {
     setToDoRenderState(null);
   }
 
-  function UnrenderMinimizedToDo()
-  {
-    setMinimizedToDoState(null);
-  }
-
   function BtnSaveOnClickFuncion()
   {
     UnrenderToDo();
+
   }
 
+  function AddMinimizedToDo()
+  {
+    // Descobrir como krls fazer isso, testar a ideia do prof, pegar o valor antigo do state que contem o array de componentes e adicionar um novo componente nele
+  }
+  
   return (
     <div id="App">
       <BtnCreatNewNoDo OnClick={RenderToDo} Text='Criar To-Do'></BtnCreatNewNoDo>
+      {MinimizedToDos}
       {ToDoRenderState}
     </div>
   );

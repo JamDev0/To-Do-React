@@ -66,6 +66,7 @@
     grid-template-rows: 1.5fr 1fr;
     grid-template-areas: 'Yes'
                          'No';
+    row-gap: 20px;
 }
 
 #MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm:focus
