@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import MinimizedToDo from './MinimizedToDo';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MinimizedToDo/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

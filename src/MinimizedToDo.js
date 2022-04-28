@@ -47,10 +47,10 @@ function MinimizedToDo(Props)
     }
     
     useEffect(()=>{
-        Element = document.querySelectorAll('#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[0];
-        if(Element)
+        let Ele = document.querySelectorAll('#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[0];
+        if(Ele)
         {
-            Element.focus();
+            Ele.focus();
         }
     }, [DeleteElementState])
 
@@ -66,7 +66,7 @@ function MinimizedToDo(Props)
         {
             MinimizedToDoTouchStart = NewMinimizedToDoTouchStart;
         }
-        let Element = document.querySelector('#MinimizedToDo');
+        let Ele = document.querySelector('#MinimizedToDo');
         let ElementCurrentLeft;
         let AmounthOfDrag = (MinimizedToDoTouchStart - NewMinimizedToDoTouchStart)*-1;
 
@@ -74,27 +74,27 @@ function MinimizedToDo(Props)
         console.log('New Cord: ', NewMinimizedToDoTouchStart);
         
 
-        if(Element.style.left == '')
+        if(Ele.style.left === '')
         {
             ElementCurrentLeft = 0;
         }
         else
         {
-            ElementCurrentLeft = parseFloat(Element.style.left.replace('px', ''));
+            ElementCurrentLeft = parseFloat(Ele.style.left.replace('px', ''));
         }
-        if((ElementCurrentLeft + AmounthOfDrag) > (Element.clientWidth*0.35))
+        if((ElementCurrentLeft + AmounthOfDrag) > (Ele.clientWidth*0.35))
         {
-            Element.style.left = (Element.clientWidth*0.35) + 'px';
+            Ele.style.left = (Ele.clientWidth*0.35) + 'px';
             MinimizedToDoTouchStart = NewMinimizedToDoTouchStart;
             return
         }
         if((ElementCurrentLeft + AmounthOfDrag) < 0)
         {
-            Element.style.left = '0px';
+            Ele.style.left = '0px';
             MinimizedToDoTouchStart = NewMinimizedToDoTouchStart;
             return
         }
-        Element.style.left = (ElementCurrentLeft + AmounthOfDrag) + 'px'; 
+        Ele.style.left = (ElementCurrentLeft + AmounthOfDrag) + 'px'; 
         
         MinimizedToDoTouchStart = NewMinimizedToDoTouchStart;
     }
@@ -107,11 +107,11 @@ function MinimizedToDo(Props)
         ClampDesc.watch();
     }, [])
     return(
-        <div id='MinimizedToDoWrapper' onTouchMove={DragTheMinimizedToDo} onTouchEnd={()=>{MinimizedToDoTouchStart = 0}}>
+        <div id='MinimizedToDoWrapper'>
             <div className='DeleteElementWrapper'>
                 {DeleteElementState}
             </div>
-            <div id='MinimizedToDo'>
+            <div id='MinimizedToDo' onTouchMove={DragTheMinimizedToDo} onTouchEnd={()=>{MinimizedToDoTouchStart = 0}} onClick={Props.MinimizedToDoOnClick}>
                 <div className='Content'>
                     <h2>Title</h2>
                     <p id='MinimizedToDoContentDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eleifend hendrerit nisi ac lobortis. Sed a eros vestibulum, commodo sapien ut, molestie nunc. Pellentesque pretium volutpat lacus, sed tempor augue egestas ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

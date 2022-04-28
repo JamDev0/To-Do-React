@@ -2,7 +2,7 @@
 {
     position: relative;
     
-    width: 80%;
+    width: 100%;
 }
 
 #MinimizedToDoWrapper > .DeleteElementWrapper
@@ -68,6 +68,11 @@
                          'No';
 }
 
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm:focus
+{
+    outline: none;
+}
+
 #MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes
 {
     min-width: 100%;
@@ -78,11 +83,15 @@
     align-items: center;
     column-gap: 15px;
 
-    border-top-left-radius: 10px;
-    border: 3.5 solid var(--Dark-Ok-Color);
-    border-bottom: none;
+    border-radius: 10px;
+    border: 3.5px solid var(--Dark-Ok-Color);
 
     color: var(--Dark-Ok-Color);
+}
+
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes:focus
+{
+    outline: none;
 }
 
 #MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes > .Img
@@ -104,11 +113,15 @@
     align-items: center;
     column-gap: 15px;
 
-    border-bottom-left-radius: 10px;
-    border: 3.5 solid var(--Dark-No-Color);
-    border-bottom: none;
+    border-radius: 10px;
+    border: 3.5px solid var(--Dark-No-Color);
     
     color: var(--Dark-No-Color);
+}
+
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No:focus
+{
+    outline: none;
 }
 
 #MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No > .Img
@@ -123,7 +136,6 @@
 #MinimizedToDo
 {
     position: relative;
-    z-index: 1;
 
     width: 100%;
 

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import BtnCreatNewNoDo from './BtnCreatNewNoDo';
+import MinimizedToDo from './MinimizedToDo';
 import ToDo from './ToDo';
 
 function App() {
-  const [ToDoRenderState, setToDoRenderState] = useState(null)
+  const [ToDoRenderState, setToDoRenderState] = useState(null);
+
+  const [AmounthOfMinimizedToDo, setAmounthOfMinimizedToDo] = useState(1);
 
   function RenderToDo()
   {
     setToDoRenderState(()=>{
       return(
-        <ToDo Title='Title' BtnSaveOnClick={UnrenderToDo} CloseOnClick={UnrenderToDo}></ToDo>
+        <ToDo Title='Title' BtnSaveOnClick={BtnSaveOnClickFuncion} CloseOnClick={UnrenderToDo}></ToDo>
       )
     });
   }
@@ -18,6 +21,16 @@ function App() {
   function UnrenderToDo()
   {
     setToDoRenderState(null);
+  }
+
+  function UnrenderMinimizedToDo()
+  {
+    setMinimizedToDoState(null);
+  }
+
+  function BtnSaveOnClickFuncion()
+  {
+    UnrenderToDo();
   }
 
   return (
