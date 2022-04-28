@@ -5,14 +5,19 @@
     width: 80%;
 }
 
-#MinimizedToDoWrapper > .Delete
+#MinimizedToDoWrapper > .DeleteElementWrapper
 {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
 
     min-width: 35%;
+    height: 100%;
+}
+
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete
+{
+    width: 100%;
     height: 100%;
 
     display: flex;
@@ -29,7 +34,7 @@
     border-radius: 8px;
 }
 
-#MinimizedToDoWrapper > .Delete > .Img
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > .Img
 {
     width: 75%;
     aspect-ratio: 1/1;
@@ -38,7 +43,7 @@
     background-size: cover;
 }
 
-#MinimizedToDoWrapper > .Delete > span
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > span
 {
     font-family: 'Open Sans';
     font-weight: 500;
@@ -46,19 +51,16 @@
     color: var(--Dark-No-Color);
 }
 
-#MinimizedToDoWrapper > .Confirm
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm
 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    
-    min-width: 35%;
+    width: 100%;
     height: 100%;
 
     font-family: 'Open Sans';
     font-weight: 500;
     font-size: 5rem;
+
+    background-color: var(--Dark-Elements-Background-Color);
 
     display: grid;
     grid-template-rows: 1.5fr 1fr;
@@ -66,21 +68,33 @@
                          'No';
 }
 
-#MinimizedToDoWrapper > .Confirm > .Yes
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes
 {
-    width: 100%;
+    min-width: 100%;
     height: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    column-gap: 15px;
 
-    background-color: var(--Dark-Ok-Color);
+    border-top-left-radius: 10px;
+    border: 3.5 solid var(--Dark-Ok-Color);
+    border-bottom: none;
 
-    color: var(--Dark-Text-Color);
+    color: var(--Dark-Ok-Color);
 }
 
-#MinimizedToDoWrapper > .Confirm > .No
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes > .Img
+{
+    width: 20%;
+    aspect-ratio: 1/1;
+
+    background-image: url('Images/YesIcon.svg');
+    background-size: cover;
+}
+
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No
 {
     width: 100%;
     height: 100%;
@@ -88,10 +102,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    column-gap: 15px;
 
-    background-color: var(--Dark-No-Color);
+    border-bottom-left-radius: 10px;
+    border: 3.5 solid var(--Dark-No-Color);
+    border-bottom: none;
     
-    color: var(--Dark-Text-Color);
+    color: var(--Dark-No-Color);
+}
+
+#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No > .Img
+{
+    width: 20%;
+    aspect-ratio: 1/1;
+    
+    background-image: url('Images/No.svg');
+    background-size: cover;
 }
 
 #MinimizedToDo
