@@ -51,7 +51,6 @@ function ToDo(Props)
         Props.BtnSaveOnClick(Title, Description, EndDate)
     }
 
-    
     return(
         <div id="ToDo">
             <div className="Background"></div>
@@ -77,6 +76,8 @@ function ToDo(Props)
             </div>
         </div>
     )
+
+    
 }
 
 export default ToDo;

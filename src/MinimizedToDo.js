@@ -115,13 +115,15 @@ function MinimizedToDo(Props)
     function ElementClick()
     {
         let Title = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > h2')[IndexE].innerText;
-        console.log('Title: ', Title);
         let Description = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > p')[IndexE].innerText;
-        console.log('Desc: ', Description);
         let EndDate = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > span')[IndexE].innerText;
-        console.log('EndDate: ', EndDate);
+        let MustBeChecked = true;
+        if(EndDate === 'None')
+        {
+            MustBeChecked = false;
+        }
 
-        // Props.MinimizedToDoOnClick()
+        Props.MinimizedToDoOnClick(Title, Description, EndDate, MustBeChecked);
     }
 
     return(
