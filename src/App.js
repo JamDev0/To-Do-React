@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import './App.css';
 import BtnCreatNewNoDo from './BtnCreatNewNoDo';
 import MinimizedToDo from './MinimizedToDo';
-import ToDo from './ToDo';
+import ToDo, {RenderCalendarToDo} from './ToDo';
 
 
 let AmounthOfMinimizedToDo = 0;
@@ -29,14 +29,15 @@ function App() {
       console.log(Props)
       document.querySelectorAll('#ToDoContainer > .Title')[0].innerText = Props.Title;
       document.querySelector('#ToDoContainerTextArea').value = Props.Description;
-
+      RenderCalendarToDo();
       // Arrumar isso aqui em baixo
 
       if(Props.MustBeChecked)
       {
+        console.log(document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar'));
         document.querySelector('#Check').checked = true;
-        document.querySelector('#Check').dispatchEvent(new Event('onchange'));
-        document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar')[0].value = Props.Date;
+        RenderCalendarToDo();
+        // document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar')[0].value = Props.Date;
       }
     }
   }, [ToDoRenderState]);
