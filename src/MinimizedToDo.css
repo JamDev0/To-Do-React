@@ -1,11 +1,11 @@
-#MinimizedToDoWrapper
+.MinimizedToDoWrapper
 {
     position: relative;
     
     width: 100%;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper
+.MinimizedToDoWrapper > .DeleteElementWrapper
 {
     position: absolute;
     top: 0;
@@ -15,7 +15,7 @@
     height: 100%;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Delete
 {
     width: 100%;
     height: 100%;
@@ -34,7 +34,7 @@
     border-radius: 8px;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > .Img
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > .Img
 {
     width: 75%;
     aspect-ratio: 1/1;
@@ -43,7 +43,7 @@
     background-size: cover;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > span
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Delete > span
 {
     font-family: 'Open Sans';
     font-weight: 500;
@@ -51,7 +51,7 @@
     color: var(--Dark-No-Color);
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm
 {
     width: 100%;
     height: 100%;
@@ -69,12 +69,12 @@
     row-gap: 20px;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm:focus
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm:focus
 {
     outline: none;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes
 {
     min-width: 100%;
     height: 100%;
@@ -90,12 +90,12 @@
     color: var(--Dark-Ok-Color);
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes:focus
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes:focus
 {
     outline: none;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes > .Img
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .Yes > .Img
 {
     width: 20%;
     aspect-ratio: 1/1;
@@ -104,7 +104,7 @@
     background-size: cover;
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No
 {
     width: 100%;
     height: 100%;
@@ -120,7 +120,7 @@
     color: var(--Dark-No-Color);
 }
 
-#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No:focus
+.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm > .No:focus
 {
     outline: none;
 }
@@ -134,7 +134,7 @@
     background-size: cover;
 }
 
-#MinimizedToDo
+.MinimizedToDo
 {
     position: relative;
 
@@ -157,7 +157,7 @@
     box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.726);
 }
 
-#MinimizedToDo > .Content
+.MinimizedToDo > .Content
 {
     grid-area: Content;
 
@@ -167,7 +167,7 @@
     max-width: 100%;
 }
 
-#MinimizedToDo > .Content > h2
+.MinimizedToDo > .Content > h2
 {
     grid-area: Title;
 
@@ -179,7 +179,7 @@
     height: min-content;
 }
 
-#MinimizedToDo > .Content > p
+.MinimizedToDo > .Content > p
 {
     grid-area: Description;
 
@@ -192,7 +192,7 @@
     margin-bottom: 30px;
 }
 
-#MinimizedToDo > .Content > span
+.MinimizedToDo > .Content > span
 {
     grid-area: Date;
 
@@ -204,7 +204,7 @@
     height: min-content;
 }
 
-#MinimizedToDo > .DoneBtn
+.MinimizedToDo > .DoneBtn
 {
     grid-area: DoneBtn;
     justify-self: center;

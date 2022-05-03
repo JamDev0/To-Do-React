@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import 'react-calendar/dist/Calendar.css';
 import './ToDo.css';
 import "react-datetime/css/react-datetime.css";
 import Datetime from 'react-datetime';
@@ -19,7 +18,7 @@ function ToDo(Props)
         {
             setCalendarToDo(()=>{
                 return(
-                    <Datetime inputProps={{'inputMode': 'none'}} initialValue={new Date()} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
+                    <Datetime inputProps={{'inputMode': 'none', 'className': 'Calendar'}} initialValue={new Date()} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
                 )
             })
 
@@ -33,6 +32,25 @@ function ToDo(Props)
         }
     }
 
+    function BtnSaveClick()
+    {
+        let Title = document.querySelectorAll('#ToDoContainer > .Title')[0].innerText;
+        let Description = document.querySelector('#ToDoContainerTextArea').value;
+        let DateNecessityCheckBox = document.querySelectorAll('#CheckContainer > input')[0];
+        let EndDate;
+
+        if(DateNecessityCheckBox.checked)
+        {
+            EndDate = document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar')[0].value;
+        }
+        else
+        {
+            EndDate ='None';
+        }
+
+        Props.BtnSaveOnClick(Title, Description, EndDate)
+    }
+
     
     return(
         <div id="ToDo">
@@ -40,7 +58,7 @@ function ToDo(Props)
             <div id="ToDoWrapper">
                 <div className="Close" onClick={Props.CloseOnClick}></div>
                 <div id="ToDoContainer">
-                    <span role="textbox" data-text="Titulo" contentEditable></span>
+                    <span className="Title" role="textbox" data-text="Titulo" contentEditable></span>
                     <label htmlFor="ToDoContainerTextArea">Descrição</label>
                     <div className="TextareaWrapper">
                         <div className="Border Top"></div>
@@ -54,8 +72,7 @@ function ToDo(Props)
                     <div className='CalendarWrapper'>
                         {CalendarToDo}  
                     </div>
-                    {console.log(Props)}
-                    <button id="BtnSalvar" onClick={Props.BtnSaveOnClick}>Salvar</button>
+                    <button id="BtnSalvar" onClick={BtnSaveClick}>Salvar</button>
                 </div>
             </div>
         </div>

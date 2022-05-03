@@ -7,6 +7,8 @@ function MinimizedToDo(Props)
     let MinimizedToDoTouchStart = 0;
     let NewMinimizedToDoTouchStart = 0;
 
+    let IndexE = Props.Key - 1;
+
     const [DeleteElementState, setDeleteElementState] = useState(()=>{
         return(
             <div className='Delete' onClick={RenderDeleteElementSecondState}> 
@@ -28,12 +30,17 @@ function MinimizedToDo(Props)
         })
     }
 
+    function UnrenderItsSelf()
+    {
+        Props.BtnConfirmDeletOnClick(IndexE);
+    }
+
     function RenderDeleteElementSecondState()
     {
         setDeleteElementState(()=>{
             return(
                 <div className='Confirm' tabIndex={0} onBlur={RenderDeleteElementFirstState}> 
-                    <div className='Yes' onClick={Props.DeleteToDoFunction}>
+                    <div className='Yes' onClick={UnrenderItsSelf}>
                         Sim
                         <div className='Img'></div>
                     </div>
@@ -47,18 +54,18 @@ function MinimizedToDo(Props)
     }
     
     useEffect(()=>{
-        let Ele = document.querySelectorAll('#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[0];
+        let Ele = document.querySelectorAll('.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[IndexE];
         if(Ele)
         {
             Ele.focus();
         }
-    }, [DeleteElementState])
+    }, [IndexE, DeleteElementState])
 
     function DragTheMinimizedToDo(Event)
     {
-        if(document.querySelectorAll('#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[0])
+        if(document.querySelectorAll('.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[IndexE])
         {
-            document.querySelectorAll('#MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[0].blur();
+            document.querySelectorAll('.MinimizedToDoWrapper > .DeleteElementWrapper > .Confirm')[IndexE].blur();
         }
         
         NewMinimizedToDoTouchStart = Event.targetTouches[0].clientX;
@@ -66,12 +73,10 @@ function MinimizedToDo(Props)
         {
             MinimizedToDoTouchStart = NewMinimizedToDoTouchStart;
         }
-        let Ele = document.querySelector('#MinimizedToDo');
+        let Ele = document.querySelectorAll('.MinimizedToDo')[IndexE];
         let ElementCurrentLeft;
         let AmounthOfDrag = (MinimizedToDoTouchStart - NewMinimizedToDoTouchStart)*-1;
 
-
-        console.log('New Cord: ', NewMinimizedToDoTouchStart);
         
 
         if(Ele.style.left === '')
@@ -100,22 +105,35 @@ function MinimizedToDo(Props)
     }
 
     useEffect(()=>{
-        const ClampDesc = new LineClamp(document.querySelector('#MinimizedToDoContentDescription'), {maxLines: 1, ellipsis: '...'});
+        const ClampDesc = new LineClamp(document.querySelectorAll('.MinimizedToDoContentDescription')[IndexE], {maxLines: 1, ellipsis: '...'});
 
         ClampDesc.apply();
 
         ClampDesc.watch();
-    }, [])
+    }, [IndexE])
+
+    function ElementClick()
+    {
+        let Title = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > h2')[IndexE].innerText;
+        console.log('Title: ', Title);
+        let Description = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > p')[IndexE].innerText;
+        console.log('Desc: ', Description);
+        let EndDate = document.querySelectorAll('.MinimizedToDoWrapper > .MinimizedToDo > .Content > span')[IndexE].innerText;
+        console.log('EndDate: ', EndDate);
+
+        // Props.MinimizedToDoOnClick()
+    }
+
     return(
-        <div id='MinimizedToDoWrapper'>
+        <div className='MinimizedToDoWrapper'>
             <div className='DeleteElementWrapper'>
                 {DeleteElementState}
             </div>
-            <div id='MinimizedToDo' onTouchMove={DragTheMinimizedToDo} onTouchEnd={()=>{MinimizedToDoTouchStart = 0}} onClick={Props.MinimizedToDoOnClick}>
+            <div className='MinimizedToDo' onTouchMove={DragTheMinimizedToDo} onTouchEnd={()=>{MinimizedToDoTouchStart = 0}} onClick={ElementClick}>
                 <div className='Content'>
-                    <h2>Title</h2>
-                    <p id='MinimizedToDoContentDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eleifend hendrerit nisi ac lobortis. Sed a eros vestibulum, commodo sapien ut, molestie nunc. Pellentesque pretium volutpat lacus, sed tempor augue egestas ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <span>01/01/2001</span>
+                    <h2>{Props.Title}</h2>
+                    <p className='MinimizedToDoContentDescription'>{Props.Description}</p>
+                    <span>{Props.EndDate}</span>
                 </div>
                 <div className='DoneBtn'></div>
             </div>

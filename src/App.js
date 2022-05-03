@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import BtnCreatNewNoDo from './BtnCreatNewNoDo';
 import MinimizedToDo from './MinimizedToDo';
 import ToDo from './ToDo';
 
+
+let AmounthOfMinimizedToDo = 1;
+
 function App() {
   const [ToDoRenderState, setToDoRenderState] = useState(null);
 
-  let AmounthOfMinimizedToDo = 0;
-
-  const [MinimizedToDos, setMinimizedToDos] = useState([<MinimizedToDo key={AmounthOfMinimizedToDo} DeleteToDoFunction={UnrenderToDo} MinimizedToDoOnClick={RenderToDo}></MinimizedToDo>])
+  const [MinimizedToDos, setMinimizedToDos] = useState([<MinimizedToDo BtnConfirmDeletOnClick={UnrenderMinimizedToDo} Key={AmounthOfMinimizedToDo} key={AmounthOfMinimizedToDo} DeleteToDoFunction={UnrenderToDo} MinimizedToDoOnClick={RenderToDo}></MinimizedToDo>])
 
   function RenderToDo()
   {
@@ -25,17 +26,21 @@ function App() {
     setToDoRenderState(null);
   }
 
-  function BtnSaveOnClickFuncion()
+  function BtnSaveOnClickFuncion(Title, Description, EndDate)
   {
     UnrenderToDo();
 
+    AmounthOfMinimizedToDo++;
+
+    setMinimizedToDos([...MinimizedToDos, <MinimizedToDo Title={Title} Description={Description} EndDate={EndDate} BtnConfirmDeletOnClick={UnrenderMinimizedToDo} Key={AmounthOfMinimizedToDo} key={AmounthOfMinimizedToDo} DeleteToDoFunction={UnrenderToDo} MinimizedToDoOnClick={RenderToDo}></MinimizedToDo>]);
   }
 
-  function AddMinimizedToDo()
+  function UnrenderMinimizedToDo(IndexOfTheMinimized)
   {
-    // Descobrir como krls fazer isso, testar a ideia do prof, pegar o valor antigo do state que contem o array de componentes e adicionar um novo componente nele
+    AmounthOfMinimizedToDo = AmounthOfMinimizedToDo - 1;
+    setMinimizedToDos([...MinimizedToDos.slice(IndexOfTheMinimized, IndexOfTheMinimized)]);
   }
-  
+
   return (
     <div id="App">
       <BtnCreatNewNoDo OnClick={RenderToDo} Text='Criar To-Do'></BtnCreatNewNoDo>
