@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import './App.css';
 import BtnCreatNewNoDo from './BtnCreatNewNoDo';
 import MinimizedToDo from './MinimizedToDo';
-import ToDo, {RenderCalendarToDo} from './ToDo';
+import ToDo from './ToDo';
 
 
 let AmounthOfMinimizedToDo = 0;
@@ -12,35 +12,15 @@ function App() {
 
   const [MinimizedToDos, setMinimizedToDos] = useState([]);
 
-  function RenderToDo(Title, Description, Date, MustBeChecked)
+  function RenderToDo(Title, Description, Date, MustBeChecked, Origen)
   {
     setToDoRenderState(()=>{
       return(
-        <ToDo Title={Title} MustBeChecked={MustBeChecked} Description={Description} Date={Date} BtnSaveOnClick={BtnSaveOnClickFuncion} CloseOnClick={UnrenderToDo}></ToDo>
+        <ToDo Origen={Origen} Title={Title} MustBeChecked={MustBeChecked} Description={Description} Date={Date} BtnSaveOnClick={BtnSaveOnClickFuncion} CloseOnClick={UnrenderToDo}></ToDo>
       )
     });
 
   }
-  
-  useEffect(()=>{
-    if(ToDoRenderState)
-    {
-      let Props = ToDoRenderState.props;
-      console.log(Props)
-      document.querySelectorAll('#ToDoContainer > .Title')[0].innerText = Props.Title;
-      document.querySelector('#ToDoContainerTextArea').value = Props.Description;
-      RenderCalendarToDo();
-      // Arrumar isso aqui em baixo
-
-      if(Props.MustBeChecked)
-      {
-        console.log(document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar'));
-        document.querySelector('#Check').checked = true;
-        RenderCalendarToDo();
-        // document.querySelectorAll('#ToDoContainer > .CalendarWrapper > .rdt > .Calendar')[0].value = Props.Date;
-      }
-    }
-  }, [ToDoRenderState]);
 
   function UnrenderToDo()
   {
@@ -64,7 +44,7 @@ function App() {
 
   return (
     <div id="App">
-      <BtnCreatNewNoDo OnClick={()=>{RenderToDo(null, null, null)}} Text='Criar To-Do'></BtnCreatNewNoDo>
+      <BtnCreatNewNoDo OnClick={()=>{RenderToDo(null, null, null, null, 'Btn')}} Text='Criar To-Do'></BtnCreatNewNoDo>
       {MinimizedToDos}
       {ToDoRenderState}
     </div>

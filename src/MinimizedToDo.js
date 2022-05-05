@@ -105,11 +105,15 @@ function MinimizedToDo(Props)
     }
 
     useEffect(()=>{
-        const ClampDesc = new LineClamp(document.querySelectorAll('.MinimizedToDoContentDescription')[IndexE], {maxLines: 1, ellipsis: '...'});
+        if(document.querySelectorAll('.MinimizedToDoContentDescription')[IndexE])
+        {
+            const ClampDesc = new LineClamp(document.querySelectorAll('.MinimizedToDoContentDescription')[IndexE], {maxLines: 1, ellipsis: '...'});
+    
+            ClampDesc.apply();
+    
+            ClampDesc.watch();
 
-        ClampDesc.apply();
-
-        ClampDesc.watch();
+        }
     }, [IndexE])
 
     function ElementClick()
@@ -123,7 +127,9 @@ function MinimizedToDo(Props)
             MustBeChecked = false;
         }
 
-        Props.MinimizedToDoOnClick(Title, Description, EndDate, MustBeChecked);
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+        Props.MinimizedToDoOnClick(Title, Description, EndDate, MustBeChecked, ('MinimizedToDo' + IndexE));
     }
 
     return(

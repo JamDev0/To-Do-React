@@ -9,16 +9,32 @@ function ToDo(Props)
     const [RenderCalendarToDoCont, setRenderCalendarToDoCont] = useState(0);
     
     useEffect(()=>{
+        document.querySelectorAll('#ToDoContainer > .Title')[0].innerText = Props.Title;
+        document.querySelector('#ToDoContainerTextArea').value = Props.Description;
         
+        if(Props.MustBeChecked)
+        {
+            document.querySelector('#Check').checked = true;
+            RenderCalendarToDo();
+        }
     }, []);
 
     function RenderCalendarToDo()
     {
+        let CalendarDefaultValue;
+        if(Props.Date === null)
+        {
+            CalendarDefaultValue = new Date();
+        }
+        else
+        {
+            CalendarDefaultValue = Props.Date;
+        }
         if(RenderCalendarToDoCont === 0)
         {
             setCalendarToDo(()=>{
                 return(
-                    <Datetime inputProps={{'inputMode': 'none', 'className': 'Calendar'}} initialValue={new Date()} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
+                    <Datetime inputProps={{'inputMode': 'none', 'className': 'Calendar'}} initialValue={CalendarDefaultValue} dateFormat={"DD/MM/YYYY"} timeFormat={false} closeOnSelect={true}/>
                 )
             })
 
@@ -65,7 +81,7 @@ function ToDo(Props)
                         <div className="Border Bottom"></div>
                     </div>
                     <div id="CheckContainer">
-                        <input type='checkbox' id='Check' onChange={RenderCalendarToDo}></input>
+                        <input type='checkbox' id='Check' onInput={RenderCalendarToDo}></input>
                         <label htmlFor='Check'>Data Limite</label>
                     </div>
                     <div className='CalendarWrapper'>
